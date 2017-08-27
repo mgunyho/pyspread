@@ -1458,8 +1458,9 @@ class AllSeriesPanel(wx.Panel, ChartDialogEventMixin):
 
         wx.Panel.__init__(self, grid, style=style)
 
-        agwstyle = fnb.FNB_NODRAG | fnb.FNB_DROPDOWN_TABS_LIST | fnb.FNB_BOTTOM
+        agwstyle = fnb.FNB_NODRAG | fnb.FNB_DROPDOWN_TABS_LIST | fnb.FNB_BOTTOM | fnb.FNB_FANCY_TABS
         self.series_notebook = fnb.FlatNotebook(self, -1, agwStyle=agwstyle)
+
 
         self.__bindings()
         self.__do_layout()
@@ -1478,6 +1479,10 @@ class AllSeriesPanel(wx.Panel, ChartDialogEventMixin):
 
         main_sizer.AddGrowableCol(0)
         main_sizer.AddGrowableRow(0)
+
+        self.series_notebook.SetGradientColours(get_color(wx.SYS_COLOUR_BACKGROUND),
+                                                get_color(wx.SYS_COLOUR_BACKGROUND),
+                                                get_color(wx.SYS_COLOUR_WINDOW))
 
         self.SetSizer(main_sizer)
 
